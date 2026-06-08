@@ -2,7 +2,7 @@
 .hero {
   position: relative;
   padding-bottom: 0;
-  background-color: var(--color-bg);
+  background-color: var(--color-bg-with-mask);
 
 }
 
@@ -341,6 +341,20 @@
   }
 }
 
+@media (min-width: 1367px) {
+  .hero {
+    overflow: hidden;
+  }
+
+  .hero .container {
+    overflow: visible;
+  }
+
+  .hero__border {
+    width: 1605px;
+  }
+}
+
 /* Lecture */
 .lecture {
   margin-top: 78px;
@@ -675,7 +689,7 @@
   isolation: isolate;
   flex: 0 0 100%;
   min-width: 0;
-  background-color: var(--color-bg);
+  background-color: var(--color-bg-with-mask);
   padding: 20px;
   display: flex;
   flex-direction: row;
