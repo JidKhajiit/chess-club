@@ -425,9 +425,115 @@
   margin-inline: auto;
 }
 
-.session__image {
+.session__collage {
+  position: relative;
   width: 100%;
+  aspect-ratio: 474 / 400;
+}
+
+.session__core,
+.session__overlay {
+  position: absolute;
+  inset: 0;
+}
+
+.session__core {
+  z-index: 1;
+  --core-w: 474;
+  --core-h: 400;
+}
+
+.session__overlay {
+  z-index: 4;
+  bottom: -111px;
+  --overlay-w: 474;
+  --overlay-h: 400;
+}
+
+.session__image {
+  position: absolute;
+  display: block;
+  max-width: none;
+  width: auto;
   height: auto;
+  object-fit: contain;
+}
+
+.session__image--paper {
+  aspect-ratio: 406 / 438;
+}
+
+.session__image--boom-lg {
+  aspect-ratio: 529 / 344;
+}
+
+.session__image--man {
+  aspect-ratio: 339 / 341;
+}
+
+.session__image--money {
+  aspect-ratio: 122 / 241;
+}
+
+.session__image--boom-sm {
+  aspect-ratio: 245 / 214;
+}
+
+.session__image--horse {
+  aspect-ratio: 158 / 173;
+}
+
+.session__image--hand {
+  aspect-ratio: 285 / 293;
+}
+
+.session__core .session__image--paper {
+  left: calc(100% * 23 / var(--core-w));
+  top: calc(100% * 84 / var(--core-h));
+  width: calc(100% * 406 / var(--core-w));
+  z-index: 0;
+}
+
+.session__core .session__image--boom-lg {
+  left: calc(100% * -28 / var(--core-w));
+  top: calc(100% * 17 / var(--core-h));
+  width: calc(100% * 529 / var(--core-w));
+  z-index: 2;
+}
+
+.session__core .session__image--man {
+  left: calc(100% * 75 / var(--core-w));
+  top: calc(100% * 133 / var(--core-h));
+  width: calc(100% * 339 / var(--core-w));
+  z-index: 3;
+}
+
+.session__core .session__image--money {
+  right: calc(100% * 0 / var(--core-w));
+  top: calc(100% * 67 / var(--core-h));
+  width: calc(100% * 122 / var(--core-w));
+  z-index: 1;
+}
+
+.session__overlay .session__image--boom-sm {
+  left: calc(100% * -15 / var(--overlay-w));
+  bottom: calc(100% * -36 / var(--overlay-h));
+  width: calc(100% * 245 / var(--overlay-w));
+  z-index: 1;
+}
+
+.session__overlay .session__image--horse {
+  left: calc(100% * 64 / var(--overlay-w));
+  bottom: calc(100% * -48 / var(--overlay-h));
+  width: calc(100% * 158 / var(--overlay-w));
+  z-index: 3;
+}
+
+.session__overlay .session__image--hand {
+  right: calc(100% * -4 / var(--overlay-w));
+  bottom: calc(100% * -123 / var(--overlay-h));
+  width: calc(100% * 285 / var(--overlay-w));
+  z-index: 2;
 }
 
 .session__content {
@@ -787,7 +893,7 @@
 
 /* Footer */
 .footer {
-  padding-bottom: 40px;
+  padding-bottom: 30px;
   background-color: var(--color-bg);
 }
 
