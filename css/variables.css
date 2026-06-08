@@ -1,0 +1,35 @@
+:root {
+  --color-bg: #e9e4e0;
+  --color-text: #313131;
+  --color-red: #f54932;
+  --color-black: #1f1f1f;
+  --color-yellow: #fbce51;
+  --color-blue: #3057a2;
+  --color-card: #e9e2d8;
+  --color-card-number: #ffffff;
+  --color-muted: #6f6f6f;
+  --color-disabled: #d9d9d9;
+  --color-border-table: #d0ccc6;
+
+  --font-serif: "Merriweather", "Times New Roman", serif;
+  --font-sans: "Golos Text", system-ui, sans-serif;
+
+  --container-max: 1366px;
+  --container-padding: 20px;
+  --section-gap: 60px;
+
+  --bp-desktop: 1024px;
+  --bp-wide: 1366px;
+
+  --transition-fast: 0.3s ease;
+  --marquee-duration: 30s;
+  --participants-card-gap: 16px;
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --container-padding: 72px;
+    --section-gap: 200px;
+    --participants-card-gap: 26px;
+  }
+}
