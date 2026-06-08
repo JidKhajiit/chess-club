@@ -2,6 +2,8 @@
 .hero {
   position: relative;
   padding-bottom: 0;
+  background-color: var(--color-bg);
+
 }
 
 .hero::after {
@@ -275,7 +277,7 @@
   .hero__king {
     width: 127px;
     height: auto;
-    top: 36%;
+    top: 39%;
     right: 37.2%;
     z-index: 2;
   }
@@ -283,7 +285,7 @@
   .hero__queen {
     width: 150px;
     height: auto;
-    top: 20%;
+    top: 23%;
     right: 11.5%;
     z-index: 2;
   }
@@ -306,6 +308,7 @@
   .hero__actions .btn {
     flex: 0 1 auto;
     min-width: 263px;
+    height: 72px;
   }
 }
 
@@ -489,9 +492,9 @@
 }
 
 .session__value--strike s {
-  color: var(--color-red);
-  font-weight: 400;
+  color: var(--color-text);
   text-decoration: line-through;
+  text-decoration-color: var(--color-red);
   margin-right: 6px;
 }
 
@@ -562,14 +565,30 @@
 }
 
 .stages__card {
+  position: relative;
+  isolation: isolate;
   flex: 0 0 100%;
   min-width: 0;
-  background-color: var(--color-card);
+  background-color: var(--color-bg);
   padding: 20px;
   display: flex;
   flex-direction: row;
   gap: 16px;
   min-height: 112px;
+}
+
+.stages__card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  opacity: 0.3;
+  pointer-events: none;
+  background: url("../assets/images/hero/paper-mask.png") center / cover no-repeat;
+}
+
+.stages__card > * {
+  z-index: 1;
 }
 
 .stages__number {
@@ -581,7 +600,7 @@
   border-radius: 50%;
   color: var(--color-text);
   background-color: var(--color-card-number);
-  font-size: 16px;
+  font-size: 20px;
   font-weight: 600;
   flex-shrink: 0;
 }
@@ -733,7 +752,7 @@
 
 @media (min-width: 1024px) {
   .participants {
-    padding-bottom: 138px;
+    padding-bottom: 140px;
   }
 
   .participants__header {
@@ -769,6 +788,7 @@
 /* Footer */
 .footer {
   padding-bottom: 40px;
+  background-color: var(--color-bg);
 }
 
 .footer__disclaimer {
@@ -778,12 +798,11 @@
   font-size: 12px;
   line-height: 1.2;
   color: var(--color-muted);
-  text-align: center;
 }
 
 @media (min-width: 1024px) {
   .footer__disclaimer {
     font-size: 16px;
-    padding: 42px 70px 40px;
+    padding: 40px 70px;
   }
 }

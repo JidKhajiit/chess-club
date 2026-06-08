@@ -9,7 +9,6 @@ body {
   font-size: 18px;
   line-height: 1.2;
   color: var(--color-text);
-  background-color: var(--color-bg);
   overflow-x: hidden;
 }
 
@@ -33,11 +32,11 @@ body {
   display: inline-block;
   color: var(--color-blue);
   font-family: "Golos Text", system-ui, sans-serif;
-  font-size: clamp(12px, 2.5vw, 18px);
+  font-size: clamp(12px, 2.5vw, 20px);
   text-transform: none;
   margin-left: 6px;
   line-height: 1.3;
-  letter-spacing: 0.7px;
+  letter-spacing: 0.2px;
 }
 
 .section-title--red {
