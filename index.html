@@ -34,10 +34,10 @@
             </p>
             <div class="hero__actions">
               <a class="btn btn--primary" href="#lecture"
-                >Поддержать<br />шахматную мысль</a
+                >Поддержать<br /> шахматную мысль</a
               >
               <a class="btn btn--outline" href="#stages"
-                >Подробнее<br />о&nbsp;турнире</a
+                >Подробнее<br /> о&nbsp;турнире</a
               >
             </div>
           </div>
@@ -112,7 +112,7 @@
             />
             <img
               class="hero__horse"
-              src="assets/images/hero/horse.png"
+              src="assets/images/hero/white-horce.png"
               alt="horse"
               width="197"
               height="218"
@@ -146,8 +146,13 @@
       <section class="lecture reveal" id="lecture">
         <div class="container lecture__inner">
           <h2 class="lecture__heading">
-            Чтобы поддержать Международный васюкинский турнир посетите лекцию
-            на&nbsp;тему: <em>«Плодотворная дебютная идея»</em>
+            <span class="lecture__heading-lead"
+              >Чтобы поддержать Международный васюкинский турнир</span
+            >
+            <span class="lecture__heading-tail"
+              >посетите лекцию на&nbsp;тему:
+              <em>«Плодотворная дебютная идея»</em></span
+            >
           </h2>
           <figure class="lecture__media">
             <img
@@ -356,27 +361,6 @@
         <div class="container">
           <header class="participants__header">
             <h2 class="section-title">Участники турнира</h2>
-            <div class="carousel-nav">
-              <button
-                class="carousel-btn"
-                type="button"
-                data-participants-prev
-                aria-label="Предыдущий участник"
-              >
-                <img src="assets/images/arrow-left.svg" alt="" />
-              </button>
-              <span class="carousel-counter" data-participants-counter
-                >1 / 6</span
-              >
-              <button
-                class="carousel-btn"
-                type="button"
-                data-participants-next
-                aria-label="Следующий участник"
-              >
-                <img src="assets/images/arrow-right.svg" alt="" />
-              </button>
-            </div>
           </header>
           <div class="participants__viewport" data-participants-viewport>
             <div class="participants__track" data-participants-track>
@@ -466,6 +450,29 @@
               </article>
             </div>
           </div>
+          <div class="carousel-nav participants__nav">
+            <button
+              class="carousel-btn"
+              type="button"
+              data-participants-prev
+              aria-label="Предыдущий участник"
+            >
+              <img src="assets/images/arrow-left.svg" alt="" />
+            </button>
+            <div class="carousel-counter" data-participants-counter>
+              <span class="carousel-counter__current">1</span>
+              <span class="carousel-counter__separator">/</span>
+              <span class="carousel-counter__total">6</span>
+            </div>
+            <button
+              class="carousel-btn"
+              type="button"
+              data-participants-next
+              aria-label="Следующий участник"
+            >
+              <img src="assets/images/arrow-right.svg" alt="" />
+            </button>
+          </div>
         </div>
       </section>
     </main>
@@ -473,7 +480,7 @@
     <footer class="footer">
       <div class="marquee" data-marquee data-clone-from="0"></div>
       <p class="footer__disclaimer">
-        Все персонажи, события и&nbsp;цитаты являются вымышленными и&nbsp;не
+        Все персонажи, события и&nbsp;цитаты являются вымышленными <br />и&nbsp;не
         принадлежат создателям сайта. С&nbsp;подробностями можно познакомиться
         в&nbsp;главе XXXIV романа Ильи Ильфа и&nbsp;Евгения Петрова «Двенадцать
         стульев».

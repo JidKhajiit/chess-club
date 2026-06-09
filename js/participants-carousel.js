@@ -79,7 +79,11 @@
   }
 
   function updateCounter() {
-    counterEl.textContent = `${logicalIndex() + 1} / ${total}`;
+    const current = counterEl.querySelector(".carousel-counter__current");
+    const totalEl = counterEl.querySelector(".carousel-counter__total");
+    if (!current || !totalEl) return;
+    current.textContent = logicalIndex() + 1;
+    totalEl.textContent = total;
   }
 
   function goTo(newIndex, animate) {

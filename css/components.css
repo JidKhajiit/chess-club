@@ -5,10 +5,12 @@
   justify-content: center;
   text-align: center;
   border-radius: 66px;
-  padding: 18px 20px;
+  padding: 14px 20px;
   font-size: 16px;
   font-weight: 500;
   line-height: 1.2;
+  box-sizing: border-box;
+  height: 47px;
   transition:
     background-color var(--transition-fast),
     color var(--transition-fast),
@@ -26,9 +28,9 @@
 }
 
 .btn--outline {
-  border: 2px solid var(--color-black);
+  border: 2px solid transparent;
   color: var(--color-black);
-  background-color: transparent;
+  background-color: rgba(255, 255, 255, 0.8);
 }
 
 .btn--outline:hover {
@@ -40,7 +42,8 @@
   border: 1px solid var(--color-blue);
   color: var(--color-blue);
   border-radius: 66px;
-  padding: 7px 12px;
+  height: 35px;
+  padding: 7px 11px;
   font-size: 16px;
   font-weight: 500;
   background-color: transparent;
@@ -51,21 +54,31 @@
   color: #ffffff;
 }
 
+@media (min-width: 1024px) {
+  .btn {
+    padding: 18px 20px;
+  }
+
+  .btn--outline {
+    border-color: var(--color-black);
+    background-color: transparent;
+  }
+}
+
 /* Carousel controls */
 .carousel-btn {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 44px;
-  height: 44px;
+  width: 36px;
+  height: auto;
   border-radius: 50%;
   background-color: var(--color-text);
   transition: background-color var(--transition-fast);
 }
 
 .carousel-btn img {
-  width: 44px;
-  height: auto;
+  width: 100%;
 }
 
 .carousel-btn:hover:not(:disabled) {
@@ -82,14 +95,23 @@
 .carousel-nav {
   display: flex;
   align-items: center;
-  gap: 8px;
+  justify-content: center;
+  gap: 4px;
 }
 
 .carousel-counter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1px;
   font-size: 16px;
   font-weight: 500;
   min-width: 48px;
-  text-align: center;
+}
+
+.carousel-counter__separator,
+.carousel-counter__total {
+  opacity: 0.6;
 }
 
 .carousel-dots {
@@ -115,12 +137,22 @@
   background-color: #a8a4a0;
 }
 
+@media (min-width: 1024px) {
+  .carousel-btn {
+    width: 44px;
+  }
+
+  .carousel-nav {
+    gap: 8px;
+  }
+}
+
 /* Marquee */
 .marquee {
   overflow: hidden;
   background-color: var(--color-red);
   color: #ffffff;
-  padding: 17px 0;
+  padding: 9px 0;
 }
 
 .marquee__track {
@@ -135,7 +167,7 @@
   flex-shrink: 0;
   padding-right: 48px;
   font-family: var(--font-serif);
-  font-size: clamp(14px, 3.5vw, 22px);
+  font-size: clamp(16px, 3.5vw, 22px);
   font-weight: 400;
   text-transform: uppercase;
   white-space: nowrap;
@@ -144,6 +176,12 @@
 .marquee__content span + span::before {
   content: "•";
   margin: 0 16px;
+}
+
+@media (min-width: 1024px) {
+  .marquee {
+    padding: 17px 0;
+  }
 }
 
 @keyframes marquee-scroll {

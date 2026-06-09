@@ -26,6 +26,9 @@
   --transition-fast: 0.3s ease;
   --marquee-duration: 30s;
   --participants-card-gap: 16px;
+
+  --hero-city-center-x: 10.34vw;
+  --hero-border-center-x: 9vw;
 }
 
 @media (min-width: 1024px) {
@@ -33,5 +36,12 @@
     --container-padding: 72px;
     --section-gap: 200px;
     --participants-card-gap: 26px;
+    --hero-city-center-x: 72.27vw;
+  }
+}
+
+@media (min-width: 1366px) {
+  :root {
+    --hero-city-center-x: 51vw;
   }
 }
