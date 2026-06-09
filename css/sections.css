@@ -718,29 +718,88 @@
 }
 
 .stages__header {
-  margin-bottom: 54px;
+  margin-bottom: 145px;
 }
 
 .stages__wrapper {
   position: relative;
+  min-width: 0;
+}
+
+.stages__plane-overlay {
+  position: absolute;
+  top: -133px;
+  left: calc(-1 * var(--container-padding) + 27px);
+  width: min(340px, 100%);
+  max-width: calc(100vw - var(--container-padding) * 2);
+  height: auto;
+  z-index: 2;
+  pointer-events: none;
+  rotate: -3deg;
 }
 
 .stages__viewport {
   overflow: hidden;
+  width: 100%;
+  min-width: 0;
 }
 
 .stages__grid {
   display: flex;
+  width: 100%;
   transition: transform 0.4s ease;
+}
+
+.stages__group,
+.stages__grid > .stages__card {
+  flex: 0 0 100%;
+  min-width: 0;
+}
+
+.stages__group {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  height: 300px;
+  padding-top: 48px;
+  background-color: var(--color-bg-with-mask);
+}
+
+.stages__grid > .stages__card {
+  padding-top: 62px;
+}
+
+.stages__group::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  opacity: 0.3;
+  pointer-events: none;
+  background: url("../assets/images/hero/paper-mask.png") center / cover no-repeat;
+}
+
+.stages__group .stages__card {
+  flex: unset;
+  min-height: 0;
+  background-color: transparent;
+}
+
+.stages__group .stages__card::after {
+  content: none;
+}
+
+.stages__group .stages__card + .stages__card {
+  border-top: 1px solid rgb(255 255 255 / 10%);
 }
 
 .stages__card {
   position: relative;
   isolation: isolate;
-  flex: 0 0 100%;
   min-width: 0;
   background-color: var(--color-bg-with-mask);
-  padding: 20px;
+  padding: 14px 20px;
   display: flex;
   flex-direction: row;
   gap: 16px;
@@ -776,7 +835,7 @@
 }
 
 .stages__text {
-  font-size: 20px;
+  font-size: 18px;
   line-height: 1.2;
 }
 
@@ -786,20 +845,34 @@
 
 .stages__controls {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 16px;
+  justify-content: center;
   margin-top: 28px;
 }
 
 .stages__controls .carousel-nav {
-  order: 1;
+  gap: 16px;
+}
+
+.stages__controls .carousel-dots {
+  margin-top: 0;
 }
 
 @media (min-width: 1024px) {
 
   .stages {
     margin-top: 0;
+  }
+
+  .stages__header {
+    margin-bottom: 54px;
+  }
+
+  .stages__plane-overlay {
+    display: none;
+    top: -52px;
+    left: calc(-1 * var(--container-padding) + 8px);
+    width: min(280px, 74vw);
+    rotate: 0;
   }
 
   .stages__viewport {
@@ -814,22 +887,44 @@
     transition: none;
   }
 
-  .stages__card {
+  .stages__text {
+    font-size: 20px;
+  }
+
+  .stages__group {
+    display: contents;
+    height: auto;
+  }
+
+  .stages__group .stages__card {
+    min-height: 112px;
+    background-color: var(--color-bg-with-mask);
+  }
+
+  .stages__group .stages__card::after {
+    content: "";
+  }
+
+  .stages__group .stages__card + .stages__card {
+    border-top: none;
+  }
+
+  .stages__grid > .stages__card {
     flex: unset;
     min-height: 112px;
   }
 
-  .stages__card:nth-child(3) {
+  .stages__card--tall {
     grid-row: span 2;
     min-height: auto;
   }
 
-  .stages__card:nth-child(7) {
+  .stages__card--wide {
     grid-column: span 2;
     position: relative;
   }
 
-  .stages__card:nth-child(7) .stages__text {
+  .stages__card--wide .stages__text {
     flex: 1;
     min-width: 0;
     padding-right: 305px;
@@ -853,6 +948,7 @@
 /* Participants */
 .participants {
   padding-bottom: 100px;
+  margin-top: 60px;
 }
 
 .participants__header {
@@ -924,6 +1020,7 @@
 @media (min-width: 1024px) {
   .participants {
     padding-bottom: 140px;
+    margin-top: 0;
   }
 
   .participants .container {
@@ -967,7 +1064,7 @@
 
 /* Footer */
 .footer {
-  padding-bottom: 30px;
+  padding-bottom: 20px;
   background-color: var(--color-bg);
 }
 
@@ -981,6 +1078,10 @@
 }
 
 @media (min-width: 1024px) {
+  .footer {
+    padding-bottom: 30px;
+  }
+
   .footer__disclaimer {
     padding: 40px 70px;
   }

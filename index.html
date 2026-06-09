@@ -275,38 +275,49 @@
             </h2>
           </header>
           <div class="stages__wrapper">
+            <img
+              class="stages__plane-overlay"
+              src="assets/images/plane.png"
+              alt=""
+              width="340"
+              height="200"
+            />
             <div class="stages__viewport" data-stages-viewport>
               <div class="stages__grid" data-stages-track>
-                <article class="stages__card">
-                  <span class="stages__number">1</span>
-                  <p class="stages__text">
-                    Строительство железнодорожной магистрали Москва-Васюки
-                  </p>
-                </article>
-                <article class="stages__card">
-                  <span class="stages__number">2</span>
-                  <p class="stages__text">
-                    Открытие фешенебельной гостиницы «Проходная пешка» и других
-                    небоскрёбов
-                  </p>
-                </article>
-                <article class="stages__card">
+                <div class="stages__group">
+                  <article class="stages__card">
+                    <span class="stages__number">1</span>
+                    <p class="stages__text">
+                      Строительство железнодорожной магистрали Москва-Васюки
+                    </p>
+                  </article>
+                  <article class="stages__card">
+                    <span class="stages__number">2</span>
+                    <p class="stages__text">
+                      Открытие фешенебельной гостиницы «Проходная пешка» и других
+                      небоскрёбов
+                    </p>
+                  </article>
+                </div>
+                <article class="stages__card stages__card--tall">
                   <span class="stages__number">3</span>
                   <p class="stages__text">
                     Поднятие сельского хозяйства в радиусе <br/>на тысячу километров:
                     производство овощей, фруктов, икры, шоколадных конфет
                   </p>
                 </article>
-                <article class="stages__card">
-                  <span class="stages__number">4</span>
-                  <p class="stages__text">Строительство дворца <br/>для турнира</p>
-                </article>
-                <article class="stages__card">
-                  <span class="stages__number">5</span>
-                  <p class="stages__text">
-                    Размещение гаражей <br/>для гостевого <br/>автотранспорта
-                  </p>
-                </article>
+                <div class="stages__group">
+                  <article class="stages__card">
+                    <span class="stages__number">4</span>
+                    <p class="stages__text">Строительство дворца <br/>для турнира</p>
+                  </article>
+                  <article class="stages__card">
+                    <span class="stages__number">5</span>
+                    <p class="stages__text">
+                      Размещение гаражей <br/>для гостевого <br/>автотранспорта
+                    </p>
+                  </article>
+                </div>
                 <article class="stages__card">
                   <span class="stages__number">6</span>
                   <p class="stages__text">
@@ -314,7 +325,7 @@
                     сенсационных результатов
                   </p>
                 </article>
-                <article class="stages__card">
+                <article class="stages__card stages__card--wide">
                   <span class="stages__number">7</span>
                   <p class="stages__text">
                     Создание аэропорта «Большие Васюки» с регулярным отправлением
@@ -342,6 +353,7 @@
                 >
                   <img src="assets/images/arrow-left.svg" alt="" />
                 </button>
+                <div class="carousel-dots" data-stages-dots></div>
                 <button
                   class="carousel-btn"
                   type="button"
@@ -351,7 +363,6 @@
                   <img src="assets/images/arrow-right.svg" alt="" />
                 </button>
               </div>
-              <div class="carousel-dots" data-stages-dots></div>
             </div>
           </div>
         </div>

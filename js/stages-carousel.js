@@ -8,11 +8,11 @@
 
   if (!track || !prevBtn || !nextBtn || !dotsContainer) return;
 
-  const cards = Array.from(track.children);
-  const total = cards.length;
+  const slides = Array.from(track.children);
+  const total = slides.length;
   let index = 0;
 
-  cards.forEach((_, i) => {
+  slides.forEach((_, i) => {
     const dot = document.createElement("button");
     dot.type = "button";
     dot.className = "carousel-dot" + (i === 0 ? " is-active" : "");
