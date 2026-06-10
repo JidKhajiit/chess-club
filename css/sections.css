@@ -82,6 +82,7 @@
   flex-direction: column;
   gap: 13px;
   max-width: 335px;
+  margin-inline: auto;
 }
 
 .hero__actions .btn {
@@ -155,16 +156,50 @@
   }
 }
 
-.hero__city {
+.hero__skyline {
+  --hero-skyline-min-width: calc(234px * 1624 / 430);
+  --hero-skyline-max-width: calc(1440px * 1.1);
+
   position: absolute;
   bottom: 0;
-  left: calc(50% - 50vw + var(--hero-city-center-x));
+  left: 50%;
+  width: min(max(110vw, var(--hero-skyline-min-width)), var(--hero-skyline-max-width));
   transform: translateX(-50%);
-  width: auto;
-  height: 237px;
+  margin-left: calc(50vw - 50%);
+  z-index: 3;
+  pointer-events: none;
+}
+
+.hero__city-wrap {
+  position: relative;
+  left: -146px;
+  bottom: 2px;
+  width: 100%;
+  z-index: 1;
+}
+
+.hero__city {
+  position: relative;
+  z-index: 2;
+  display: block;
+  width: 100%;
+  height: auto;
   aspect-ratio: 1624 / 430;
   max-width: none;
-  z-index: 3;
+  object-fit: contain;
+}
+
+.hero__border {
+  position: absolute;
+  bottom: calc(100% * 2 / 430);  
+  left: 33.2%;
+  transform: translateX(calc(-50% - 0.56%));
+  width: calc(100% * 430 * 2126 / (1624 * 565));
+  height: auto;
+  aspect-ratio: 2072 / 565;
+  max-width: none;
+  z-index: 2;
+  pointer-events: none;
   object-fit: contain;
 }
 
@@ -173,7 +208,7 @@
   bottom: -19px;
   left: 50.4%;
   transform: translateX(-45%);
-  width: min(32%, 220px);
+  width: min(120px, 32%);
   height: auto;
   aspect-ratio: 197 / 218;
   max-width: none;
@@ -183,27 +218,27 @@
 
 .hero__king {
   position: absolute;
-  top: 70%;
-  right: 67%;
-  width: min(16%, 90px);
+  top: 1.4%;
+  left: 52.2%;
+  width: min(70px, 7%);
   height: auto;
   aspect-ratio: 131 / 266;
   max-width: none;
   object-fit: contain;
-  z-index: 2;
+  z-index: 1;
 }
 
 .hero__queen {
   position: absolute;
-  top: 65%;
-  right: 23%;
-  rotate: 5deg;
-  width: min(15%, 100px);
+  top: -16.8%;
+  left: 71.3%;
+  rotate: 8deg;
+  width: min(60px, 15%);
   height: auto;
   aspect-ratio: 146 / 266;
   max-width: none;
   object-fit: contain;
-  z-index: 2;
+  z-index: 1;
 }
 
 .hero__pawn {
@@ -218,17 +253,19 @@
   z-index: 5;
 }
 
-.hero__border {
-  position: absolute;
-  bottom: 2px;
-  left: calc(50% - 50vw + var(--hero-border-center-x));
-  transform: translateX(-50%);
-  width: auto;
-  height: 238px;
-  aspect-ratio: 2072 / 565;
-  max-width: none;
-  z-index: 4;
-  pointer-events: none;
+@media (min-width: 470px) and (max-width: 1023px) {
+  .hero__city-wrap {
+    left: 50%;
+    width: calc(100% * 430 * 2085 / (1624 * 565));
+    transform: translateX(-50%);
+  }
+}
+
+@media (min-width: 470px) {
+  .hero__border {
+    left: 50%;
+    width: calc(100% * 430 * 2072 / (1624 * 565));
+  }
 }
 
 @media (min-width: 1024px) {
@@ -263,8 +300,16 @@
     margin-top: 0;
   }
 
-  .hero__city {
-    height: 430px;
+  .hero__skyline {
+    --hero-skyline-min-width: calc(237px * 1624 / 430);
+    width: calc(1552px * 1440 / 1366);
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .hero__city-wrap {
+    left: 12px;
+    transform: none;
   }
 
   .hero__ellipse-wrap {
@@ -274,24 +319,23 @@
   }
 
   .hero__horse {
-    width: 196px;    height: auto;
+    width: 240px;
     left: auto;
-    right: 24.5%;
+    right: 23%;
+    bottom: -47px;
     transform: none;
   }
 
   .hero__king {
     width: 127px;
     height: auto;
-    top: 39%;
-    right: 37.2%;
   }
-
   .hero__queen {
     width: 150px;
     height: auto;
-    top: 23%;
-    right: 11.5%;
+    rotate: none;
+    top: -23%;
+    left: 72.3%;
   }
 
   .hero__pawn {
@@ -301,10 +345,16 @@
     right: 3.3%;
   }
 
+  .hero__border {
+    transform: translateX(-50%);
+    width: calc(100% * 430 * 2072 / (1593 * 565));
+  }
+
   .hero__actions {
     flex-direction: row;
     flex-wrap: wrap;
     max-width: none;
+    margin-inline: 0;
     gap: 16px;
   }
 
@@ -343,9 +393,8 @@
     min-height: 576px;
   }
 
-  .hero__city {
-    width: 119vw;
-    height: auto;
+  .hero__border {
+    transform: translateX(-50%);
   }
 }
 
@@ -661,9 +710,8 @@
   opacity: 0.8;
 }
 
-@media (min-width: 1024px) {
-
-  .session-overlay {
+@media (min-width: 1120px) {
+  .session__overlay {
     bottom: -111px;
   }
 
@@ -700,13 +748,12 @@
   }
 
   .session__label {
-    padding-bottom: 15px;
     width: 307px;
     border-right: 2px solid var(--color-border-table);
   }
 
-  .session__value {
-    padding-bottom: 15px;
+  .session__link {
+    font-size: 20px;
   }
 }
 
@@ -728,8 +775,8 @@
 
 .stages__plane-overlay {
   position: absolute;
-  top: -133px;
-  left: calc(-1 * var(--container-padding) + 27px);
+  top: -132px;
+  right: calc(-1 * var(--container-padding) + 9px);
   width: min(340px, 100%);
   max-width: calc(100vw - var(--container-padding) * 2);
   height: auto;
@@ -766,19 +813,22 @@
   background-color: var(--color-bg-with-mask);
 }
 
-.stages__grid > .stages__card {
-  padding-top: 62px;
+@media (max-width: 1023px) {
+  .stages__grid > .stages__card {
+    padding-top: 62px;
+  }
+
+  .stages__group::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    opacity: 0.3;
+    pointer-events: none;
+    background: url("../assets/images/hero/paper-mask.png") center / cover no-repeat;
+  }
 }
 
-.stages__group::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  opacity: 0.3;
-  pointer-events: none;
-  background: url("../assets/images/hero/paper-mask.png") center / cover no-repeat;
-}
 
 .stages__group .stages__card {
   flex: unset;
@@ -894,6 +944,10 @@
   .stages__group {
     display: contents;
     height: auto;
+  }
+
+  .stages__card {
+    padding: 19px 20px;
   }
 
   .stages__group .stages__card {

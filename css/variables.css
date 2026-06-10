@@ -16,7 +16,11 @@
   --font-sans: "Golos Text", system-ui, sans-serif;
 
   --container-max: 1366px;
-  --container-padding: 20px;
+  --container-padding: clamp(
+    20px,
+    calc(20px + (100vw - 375px) * 52 / (1024 - 375)),
+    72px
+  );
   --section-gap: 60px;
 
   --bp-desktop: 1024px;
@@ -26,22 +30,11 @@
   --transition-fast: 0.3s ease;
   --marquee-duration: 30s;
   --participants-card-gap: 16px;
-
-  --hero-city-center-x: 10.34vw;
-  --hero-border-center-x: 9vw;
 }
 
 @media (min-width: 1024px) {
   :root {
-    --container-padding: 72px;
     --section-gap: 200px;
     --participants-card-gap: 26px;
-    --hero-city-center-x: 72.27vw;
-  }
-}
-
-@media (min-width: 1366px) {
-  :root {
-    --hero-city-center-x: 51vw;
   }
 }
