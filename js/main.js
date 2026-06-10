@@ -28,6 +28,87 @@
     return rect.bottom - paddingBottom;
   }
 
+  function mergeBounds(bounds, rect) {
+    if (rect.width === 0 && rect.height === 0) return bounds;
+
+    if (!bounds) {
+      return { top: rect.top, bottom: rect.bottom };
+    }
+
+    return {
+      top: Math.min(bounds.top, rect.top),
+      bottom: Math.max(bounds.bottom, rect.bottom),
+    };
+  }
+
+  function getCollageBounds(session) {
+    const collage = session.querySelector(".session__collage");
+    if (!collage) return null;
+
+    let bounds = mergeBounds(null, collage.getBoundingClientRect());
+    collage.querySelectorAll(".session__image").forEach((image) => {
+      bounds = mergeBounds(bounds, image.getBoundingClientRect());
+    });
+
+    return bounds;
+  }
+
+  function getStagesPlaneBounds(stages) {
+    const plane = stages.querySelector(".stages__plane");
+    if (!plane) return null;
+    return mergeBounds(null, plane.getBoundingClientRect());
+  }
+
+  function isBottomEdgeVisible(bounds) {
+    const viewportBottom = window.innerHeight;
+    return bounds.bottom > 0 && bounds.bottom <= viewportBottom;
+  }
+
+  function markAnimated(section) {
+    section.classList.add("is-animated");
+  }
+
+  const RESIZE_DEBOUNCE_MS = 100;
+
+  function watchBottomTrigger(section, getBounds, observeTarget) {
+    let done = false;
+    let targetObserver = null;
+    let resizeTimer = null;
+
+    function tryAnimate() {
+      if (done) return;
+      const bounds = getBounds(section);
+      if (!bounds || !isBottomEdgeVisible(bounds)) return;
+      done = true;
+      markAnimated(section);
+      cleanup();
+    }
+
+    function onResize() {
+      clearTimeout(resizeTimer);
+      resizeTimer = window.setTimeout(tryAnimate, RESIZE_DEBOUNCE_MS);
+    }
+
+    function cleanup() {
+      window.removeEventListener("scroll", tryAnimate, { passive: true });
+      window.removeEventListener("resize", onResize);
+      clearTimeout(resizeTimer);
+      targetObserver?.disconnect();
+    }
+
+    if (observeTarget) {
+      targetObserver = new IntersectionObserver(
+        () => tryAnimate(),
+        { threshold: [0, 0.01, 0.05, 0.1, 0.25, 0.5, 0.75, 1] }
+      );
+      targetObserver.observe(observeTarget);
+    }
+
+    window.addEventListener("scroll", tryAnimate, { passive: true });
+    window.addEventListener("resize", onResize);
+    tryAnimate();
+  }
+
   function isReadyToAnimate(entry) {
     if (!entry.isIntersecting) return false;
 
@@ -44,7 +125,7 @@
     (entries) => {
       entries.forEach((entry) => {
         if (isReadyToAnimate(entry)) {
-          entry.target.classList.add("is-animated");
+          markAnimated(entry.target);
           animateObserver.unobserve(entry.target);
         }
       });
@@ -55,5 +136,25 @@
     }
   );
 
-  animatedSections.forEach((el) => animateObserver.observe(el));
+  animatedSections.forEach((section) => {
+    if (desktopMQ.matches && section.classList.contains("session")) {
+      watchBottomTrigger(
+        section,
+        getCollageBounds,
+        section.querySelector(".session__collage")
+      );
+      return;
+    }
+
+    if (desktopMQ.matches && section.classList.contains("stages")) {
+      watchBottomTrigger(
+        section,
+        getStagesPlaneBounds,
+        section.querySelector(".stages__plane")
+      );
+      return;
+    }
+
+    animateObserver.observe(section);
+  });
 })();
