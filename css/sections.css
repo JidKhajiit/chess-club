@@ -230,6 +230,7 @@
   aspect-ratio: 131 / 266;
   max-width: none;
   object-fit: contain;
+  transform-origin: 50% 100%;
   z-index: 1;
 }
 
@@ -237,12 +238,12 @@
   position: absolute;
   top: -16.8%;
   left: 71.3%;
-  rotate: 8deg;
   width: min(60px, 15%);
   height: auto;
   aspect-ratio: 146 / 266;
   max-width: none;
   object-fit: contain;
+  transform-origin: 50% 100%;
   z-index: 1;
 }
 
@@ -598,6 +599,9 @@
   left: calc(100% * -28 / var(--core-w));
   top: calc(100% * 17 / var(--core-h));
   width: calc(100% * 529 / var(--core-w));
+  transform: scale(0);
+  transform-origin: 55% 60%;
+  opacity: 0;
   z-index: 2;
 }
 
@@ -619,6 +623,9 @@
   left: calc(100% * -15 / var(--overlay-w));
   bottom: calc(100% * -36 / var(--overlay-h));
   width: calc(100% * 245 / var(--overlay-w));
+  transform: scale(0);
+  transform-origin: 55% 60%;
+  opacity: 0;
   z-index: 1;
 }
 
@@ -626,6 +633,8 @@
   left: calc(100% * 64 / var(--overlay-w));
   bottom: calc(100% * -48 / var(--overlay-h));
   width: calc(100% * 158 / var(--overlay-w));
+  transform: rotate(40deg);
+  transform-origin: 50% 92%;
   z-index: 3;
 }
 
@@ -633,6 +642,7 @@
   right: calc(100% * -4 / var(--overlay-w));
   bottom: calc(100% * -123 / var(--overlay-h));
   width: calc(100% * 285 / var(--overlay-w));
+  transform-origin: 85% 75%;
   z-index: 2;
 }
 
