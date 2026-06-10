@@ -412,6 +412,9 @@
     overflow: visible;
   }
 
+  .hero__skyline {
+    margin-left: 0;
+  }
 }
 
 /* Lecture */
