@@ -112,24 +112,29 @@
   transform-origin: 50% 100%;
 }
 
-.hero__horse {
+.hero__horse:not(.animation-done) {
   animation: hero-horse-enter 2s both;
 }
 
-.hero__pawn {
+.hero__pawn:not(.animation-done) {
   animation: hero-pawn-enter 2s 1.33s both;
 }
 
+.hero__horse.animation-done,
+.hero__pawn.animation-done {
+  animation: none;
+}
+
 @media (min-width: 1024px) {
-  .hero__horse {
+  .hero__horse:not(.animation-done) {
     animation-name: hero-horse-enter-desktop;
   }
 }
 
-/* Deferred rendering — hidden until is-animated */
-.session__overlay .session__image--hand,
-.stages__plane,
-.stages__plane-overlay {
+/* Deferred rendering — hidden until animated and done */
+.session__overlay .session__image--hand:not(.animation-done),
+.stages__plane:not(.animation-done),
+.stages__plane-overlay:not(.animation-done) {
   opacity: 0;
 }
 
@@ -176,17 +181,35 @@
   }
 }
 
-.session.is-animated .session__overlay .session__image--hand {
+.session.is-animated .session__overlay .session__image--hand:not(.animation-done) {
   animation: session-hand-boomerang 1.1s cubic-bezier(0.45, 0, 0.25, 1) 0.25s both;
 }
 
-.session.is-animated .session__core .session__image--boom-lg,
-.session.is-animated .session__overlay .session__image--boom-sm {
+.session.is-animated .session__core .session__image--boom-lg:not(.animation-done),
+.session.is-animated .session__overlay .session__image--boom-sm:not(.animation-done) {
   animation: session-boom-reveal 0.45s cubic-bezier(0.22, 1, 0.36, 1) 0.85s both;
 }
 
-.session.is-animated .session__overlay .session__image--horse {
+.session.is-animated .session__overlay .session__image--horse:not(.animation-done) {
   animation: session-horse-tilt 0.4s cubic-bezier(0.45, 0, 0.75, 1) 0.85s forwards;
+}
+
+.session__overlay .session__image--hand.animation-done {
+  opacity: 1;
+  transform: none;
+  animation: none;
+}
+
+.session__core .session__image--boom-lg.animation-done,
+.session__overlay .session__image--boom-sm.animation-done {
+  transform: scale(1);
+  opacity: 1;
+  animation: none;
+}
+
+.session__overlay .session__image--horse.animation-done {
+  transform: rotate(0deg);
+  animation: none;
 }
 
 /* Stages: plane flies in from right on reveal */
@@ -202,9 +225,16 @@
   }
 }
 
-.stages.is-animated .stages__plane,
-.stages.is-animated .stages__plane-overlay {
+.stages.is-animated .stages__plane:not(.animation-done),
+.stages.is-animated .stages__plane-overlay:not(.animation-done) {
   animation: stages-plane-enter 2s cubic-bezier(0.25, 0.85, 0.35, 1) 0.2s both;
+}
+
+.stages__plane.animation-done,
+.stages__plane-overlay.animation-done {
+  translate: 0 0;
+  opacity: 1;
+  animation: none;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -221,18 +251,18 @@
     animation: none;
   }
 
-  .session.is-animated .session__overlay .session__image--horse {
-    transform: rotate(0deg);
-  }
-
-  .session.is-animated .session__overlay .session__image--hand,
-  .stages.is-animated .stages__plane,
-  .stages.is-animated .stages__plane-overlay {
+  .session__overlay .session__image--hand.animation-done,
+  .stages__plane.animation-done,
+  .stages__plane-overlay.animation-done {
     opacity: 1;
   }
 
-  .session__core .session__image--boom-lg,
-  .session__overlay .session__image--boom-sm {
+  .session__overlay .session__image--horse.animation-done {
+    transform: rotate(0deg);
+  }
+
+  .session__core .session__image--boom-lg.animation-done,
+  .session__overlay .session__image--boom-sm.animation-done {
     transform: scale(1);
     opacity: 1;
   }
