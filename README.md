@@ -31,5 +31,7 @@ python3 -m http.server 8080
 ## Брейкпоинты
 
 - Mobile: от 375px
+- Hero city (tablet): от 470px
 - Desktop (сетка этапов, 3 карточки участников): от 1024px
+- Session (двухколоночный layout): от 1120px
 - Максимальная ширина контента: 1366px

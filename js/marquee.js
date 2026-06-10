@@ -10,9 +10,6 @@
       const span = document.createElement("span");
       span.textContent = phrase;
       block.appendChild(span);
-      if (index < phrases.length - 1) {
-        /* bullet via CSS ::before on span + span */
-      }
     });
 
     return block;

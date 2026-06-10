@@ -31,7 +31,7 @@ body {
 .section-title_link {
   display: inline-block;
   color: var(--color-blue);
-  font-family: "Golos Text", system-ui, sans-serif;
+  font-family: var(--font-sans);
   font-size: clamp(18px, 2.5vw, 20px);
   text-transform: none;
   margin-left: 6px;

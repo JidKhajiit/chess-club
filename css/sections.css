@@ -14,7 +14,7 @@
   opacity: 0.5;
   pointer-events: none;
   mix-blend-mode: overlay;
-  background: url("../assets/images/hero/paper-mask.png") center / cover no-repeat;
+  background: var(--texture-paper-mask) center / cover no-repeat;
 }
 
 .hero .container {
@@ -157,13 +157,18 @@
 }
 
 .hero__skyline {
-  --hero-skyline-min-width: calc(234px * 1624 / 430);
-  --hero-skyline-max-width: calc(1440px * 1.1);
+  --hero-skyline-min-width: calc(
+    var(--hero-skyline-mobile-min-h) * var(--hero-city-ratio-w) / var(--hero-city-ratio-h)
+  );
+  --hero-skyline-max-width: calc(var(--hero-skyline-cap) * var(--hero-skyline-mobile-scale));
 
   position: absolute;
   bottom: 0;
   left: 50%;
-  width: min(max(110vw, var(--hero-skyline-min-width)), var(--hero-skyline-max-width));
+  width: min(
+    max(calc(var(--hero-skyline-mobile-vw) * 1vw), var(--hero-skyline-min-width)),
+    var(--hero-skyline-max-width)
+  );
   transform: translateX(-50%);
   margin-left: calc(50vw - 50%);
   z-index: 3;
@@ -301,8 +306,7 @@
   }
 
   .hero__skyline {
-    --hero-skyline-min-width: calc(237px * 1624 / 430);
-    width: calc(1552px * 1440 / 1366);
+    width: var(--hero-skyline-desktop-width);
     left: 50%;
     transform: translateX(-50%);
   }
@@ -825,10 +829,9 @@
     z-index: 0;
     opacity: 0.3;
     pointer-events: none;
-    background: url("../assets/images/hero/paper-mask.png") center / cover no-repeat;
+    background: var(--texture-paper-mask) center / cover no-repeat;
   }
 }
-
 
 .stages__group .stages__card {
   flex: unset;
@@ -863,7 +866,7 @@
   z-index: 0;
   opacity: 0.3;
   pointer-events: none;
-  background: url("../assets/images/hero/paper-mask.png") center / cover no-repeat;
+  background: var(--texture-paper-mask) center / cover no-repeat;
 }
 
 .stages__card > * {
@@ -1049,7 +1052,7 @@
   border-radius: 50%;
   overflow: hidden;
   margin-bottom: 30px;
-  background-color: #d4d0cb;
+  background-color: var(--color-avatar-bg);
 }
 
 .participants__avatar {
@@ -1100,7 +1103,6 @@
     grid-area: viewport;
     margin-top: 60px;
     margin-inline: 0;
-    /* padding-inline: var(--container-padding); */
   }
 }
 

@@ -1,3 +1,7 @@
+/* Breakpoints (reference only — native @media cannot use CSS variables):
+   mobile base: 375px | tablet hero city: 470px
+   desktop: 1024px | session row: 1120px | wide: 1366px | ultra-wide: 1367px */
+
 :root {
   --color-bg: #edd5c0;
   --color-bg-with-mask: #d4bda8;
@@ -6,14 +10,18 @@
   --color-black: #1f1f1f;
   --color-yellow: #fbce51;
   --color-blue: #3057a2;
-  --color-card: #e9e2d8;
+  --color-white: #ffffff;
   --color-card-number: #ffffff;
   --color-muted: #6f6f6f;
   --color-disabled: #d9d9d9;
   --color-border-table: #d0ccc6;
+  --color-dot-hover: #a8a4a0;
+  --color-avatar-bg: #d4d0cb;
 
   --font-serif: "Merriweather", "Times New Roman", serif;
   --font-sans: "Golos Text", system-ui, sans-serif;
+
+  --texture-paper-mask: url("../assets/images/hero/paper-mask.png");
 
   --container-max: 1366px;
   --container-padding: clamp(
@@ -23,13 +31,17 @@
   );
   --section-gap: 60px;
 
-  --bp-desktop: 1024px;
-  --bp-wide: 1366px;
-  --bp-ultra-wide: 1367px;
-
   --transition-fast: 0.3s ease;
   --marquee-duration: 30s;
   --participants-card-gap: 16px;
+
+  --hero-city-ratio-w: 1624;
+  --hero-city-ratio-h: 430;
+  --hero-skyline-mobile-min-h: 234px;
+  --hero-skyline-cap: 1440px;
+  --hero-skyline-mobile-scale: 1.1;
+  --hero-skyline-mobile-vw: 110;
+  --hero-skyline-desktop-width: calc(1552px * 1440 / 1366);
 }
 
 @media (min-width: 1024px) {

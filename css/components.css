@@ -19,7 +19,7 @@
 
 .btn--primary {
   background-color: var(--color-black);
-  color: #ffffff;
+  color: var(--color-white);
 }
 
 .btn--primary:hover {
@@ -35,7 +35,7 @@
 
 .btn--outline:hover {
   background-color: var(--color-black);
-  color: #ffffff;
+  color: var(--color-white);
 }
 
 .btn.btn--details {
@@ -52,7 +52,7 @@
 
 .btn.btn--details:hover {
   background-color: var(--color-blue);
-  color: #ffffff;
+  color: var(--color-white);
 }
 
 @media (min-width: 1024px) {
@@ -126,7 +126,7 @@
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background-color: #d0ccc6;
+  background-color: var(--color-border-table);
   transition: background-color var(--transition-fast);
 }
 
@@ -135,7 +135,7 @@
 }
 
 .carousel-dot:hover:not(.is-active) {
-  background-color: #a8a4a0;
+  background-color: var(--color-dot-hover);
 }
 
 @media (min-width: 1024px) {
@@ -152,7 +152,7 @@
 .marquee {
   overflow: hidden;
   background-color: var(--color-red);
-  color: #ffffff;
+  color: var(--color-white);
   padding: 9px 0;
 }
 
